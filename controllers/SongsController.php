@@ -34,8 +34,17 @@ class SongsController
         }
     }
 
-    public function findSongs(){
-        if(isset($_POST["search"])){
+    public function deleteSong()
+    {
+        if (isset($_POST["idDelete"])) {
+            Song::delete($_POST["idDelete"]);
+        }
+        
+    }
+
+    public function findSongs()
+    {
+        if (isset($_POST["search"])) {
             $data = array(
                 'search' => $_POST['search']
             );

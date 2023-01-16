@@ -1,4 +1,9 @@
 <?php
+if (isset($_POST["idDelete"])) {
+    $order = new SongsController();
+    $order->deleteSong();
+}
+
 if (isset($_POST['find'])) {
     $data = new SongsController();
     $songs = $data->findSongs();
@@ -43,6 +48,7 @@ if (isset($_POST['find'])) {
                                     <th scope="row"><?php echo $song->Name_Song ?></th>
                                     <td><?php echo $song->Name_Artist ?></td>
                                     <td><?php echo $song->Name_Album ?></td>
+
                                     <td class="d-flex flex-row gap-2">
                                         <form action="update" method="post">
                                             <input type="hidden" name="idUpdate" value="<?php echo $song->ID_Song ?>">
@@ -50,7 +56,7 @@ if (isset($_POST['find'])) {
                                         </form>
                                         <form method="post">
                                             <input type="hidden" name="idDelete" value="<?php echo $song->ID_Song ?>">
-                                            <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure!');"><i class="fa fa-trash"></i></button>
+                                            <button class="btn btn-sm btn-danger" onclick="var test='Are You Sure !' ; return confirm(test);"><i class="fa fa-trash"></i></button>
                                         </form>
                                         <form action="view" method="post">
                                             <input type="hidden" name="idView" value="<?php echo $song->ID_Song ?>">

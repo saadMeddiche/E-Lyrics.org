@@ -37,6 +37,12 @@ class Song
         $stmt->execute();
     }
 
+    static public function delete($id)
+    {
+        $stmt = DB::connect()->prepare("DELETE FROM `songs` WHERE ID_Song =:id");
+        $stmt->execute([":id" => $id]);
+    }
+
     static public function searchEmploye($data)
     {
         $search = $data["search"];
@@ -46,7 +52,7 @@ class Song
         $stmt = DB::connect()->prepare($requete);
 
         $stmt->execute(["%" . $search . "%", "%" . $search . "%", "%" . $search . "%"]);
-        
+
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 }
