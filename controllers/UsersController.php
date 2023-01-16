@@ -15,4 +15,8 @@ class UsersController
             Redirect::to('login');
         }
     }
+
+    static public function logout(){
+        session_destroy();
+    }
 }

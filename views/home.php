@@ -1,4 +1,9 @@
 <?php
+if (isset($_POST["logout"])) {
+    UsersController::logout();
+    Redirect::to('home');
+}
+
 if (isset($_POST["idDelete"])) {
     $order = new SongsController();
     $order->deleteSong();
@@ -18,6 +23,13 @@ if (isset($_POST['find'])) {
         <div class="col-md-10 mx-auto">
             <div class="card">
                 <div class="card-body bg-light">
+
+                    <form method="post">
+                        <button name="logout" class="btn btn-sm btn-secondary mary mr-2 mb-2">
+                            <i class="fas fa-user mr-2"><?php echo $_SESSION['username'] ?></i>
+                        </button>
+                    </form>
+
                     <a href="./add" class="btn btn-sm btn-primary mr-2 mb-2">
                         <i class="fas fa-plus">
                         </i>
@@ -26,9 +38,7 @@ if (isset($_POST['find'])) {
                         <i class="fas fa-home">
                         </i>
                     </a>
-                    <a href="./logout" class="btn btn-sm btn-secondary mary mr-2 mb-2">
-                        <i class="fas fa-user mr-2">UserName</i>
-                    </a>
+
                     <form method="post" class="d-flex flex-row justify-content-end" action="">
                         <input type="text" name="search" placeholder="Recherche">
                         <button class="btn btn-info btn-sm" name="find" type="submit"><i class="fas fa-search"></i></button>
