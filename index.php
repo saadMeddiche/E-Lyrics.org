@@ -2,21 +2,26 @@
 require_once  './autoload.php';
 
 
-$pages = ['home', 'update', 'add','view'];
+$pages = ['home', 'update', 'add', 'view'];
 
-//include the file header.php
-HomeController::IncludeFile('header');
+if (isset($_SESSION["logged"]) && $_SESSION["logged"] === true) {
 
-if (isset($_GET['page'])) {
+    //include the file header.php
+    HomeController::IncludeFile('header');
 
-    if (in_array($_GET['page'], $pages)) {
-        HomeController::IncludeFile($_GET['page']);
+    if (isset($_GET['page'])) {
+
+        if (in_array($_GET['page'], $pages)) {
+            HomeController::IncludeFile($_GET['page']);
+        } else {
+            HomeController::IncludeFile('404');
+        }
     } else {
-        HomeController::IncludeFile('404');
+        HomeController::IncludeFile('home');
     }
-} else {
-    HomeController::IncludeFile('home');
-}
 
-//include the file footer.php
-HomeController::IncludeFile('footer');
+    //include the file footer.php
+    HomeController::IncludeFile('footer');
+} else {
+    HomeController::IncludeFile('login');
+}

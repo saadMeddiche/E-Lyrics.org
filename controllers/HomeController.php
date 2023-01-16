@@ -2,7 +2,7 @@
 
 class HomeController
 {
-
+    //Include the file automatiquement by only give the name of the file
     static public function IncludeFile($page)
     {
         $array_paths = array(
