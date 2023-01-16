@@ -2,7 +2,7 @@
 require_once  './autoload.php';
 
 
-$pages = ['home', 'update', 'add'];
+$pages = ['home', 'update', 'add','view'];
 
 //include the file header.php
 HomeController::IncludeFile('header');
