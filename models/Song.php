@@ -17,4 +17,23 @@ class Song
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
+
+    //https://stackoverflow.com/questions/15209414/how-can-i-do-three-table-joins-in-an-update-query
+    static public function update($data)
+    {
+        
+        // $requete = "UPDATE songs s JOIN albums al ON s.ID_Album = al.ID_Album SET s.Name_Song=:Name_Song, s.Words_Song=:Words_Song, al.Name_Album=:Name_Album WHERE s.ID_Song =:ID_Song";
+
+        $requete = "UPDATE songs s JOIN albums al JOIN artists ar ON s.ID_Album = al.ID_Album AND al.ID_Artist = ar.ID_Artist SET s.Name_Song=:Name_Song, s.Words_Song=:Words_Song, al.Name_Album=:Name_Album ,ar.Name_Artist=:Name_Artist WHERE s.ID_Song =:ID_Song";
+
+        $stmt = DB::connect()->prepare($requete);
+
+        $stmt->bindParam(':ID_Song', $data['id']);
+        $stmt->bindParam(':Name_Song', $data['Song']);
+        $stmt->bindParam(':Words_Song', $data['Words']);
+        $stmt->bindParam(':Name_Artist', $data['Artist']);
+        $stmt->bindParam(':Name_Album', $data['Album']);
+
+        $stmt->execute();
+    }
 }
