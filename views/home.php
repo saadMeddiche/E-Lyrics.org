@@ -1,6 +1,12 @@
 <?php
-$data = new SongsController();
-$songs = $data->getAllSongs();
+if (isset($_POST['find'])) {
+    $data = new SongsController();
+    $songs = $data->findSongs();
+} else {
+    $data = new SongsController();
+    $songs = $data->getAllSongs();
+}
+
 ?>
 <div class="container">
     <div class="row my-4">

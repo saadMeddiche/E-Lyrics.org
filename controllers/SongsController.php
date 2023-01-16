@@ -33,4 +33,15 @@ class SongsController
             Song::update($data);
         }
     }
+
+    public function findSongs(){
+        if(isset($_POST["search"])){
+            $data = array(
+                'search' => $_POST['search']
+            );
+
+            $songs = Song::searchEmploye($data);
+            return $songs;
+        }
+    }
 }
