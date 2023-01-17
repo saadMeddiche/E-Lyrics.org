@@ -17,13 +17,16 @@ if (isset($_POST['login'])) {
                     <h3 class="text-center">Connexion</h3>
                 </div>
                 <div class="card-body bg-light text-center">
-
-                    <form method="post" >
+                    <?php if (isset($_SESSION["messageOfLogin"])) {
+                        echo $_SESSION["messageOfLogin"];
+                        unset($_SESSION["messageOfLogin"]);
+                    } ?>
+                    <form method="post">
 
                         <div class="form-group p-2">
                             <input type="text" name="username" placeholder="Name ..." class="form-control">
                         </div>
-                        
+
                         <div class="form-group p-2">
                             <input type="password" name="password" placeholder="Password ..." class="form-control">
                         </div>
@@ -32,7 +35,7 @@ if (isset($_POST['login'])) {
                     </form>
 
                 </div>
-                
+
             </div>
         </div>
 
