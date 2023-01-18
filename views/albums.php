@@ -4,10 +4,15 @@ if (isset($_POST["idDelete"])) {
     $order->deleteAlbum();
 }
 
-if (isset($_POST["IdOfAlbum"])) {
+if (isset($_POST["GoToSongs"])) {
 
     $_SESSION["IdOfAlbum"] = $_POST["IdOfAlbum"];
     Redirect::to('songs');
+}
+
+if (isset($_POST["Update"])) {
+    $order = new AlbumsController();
+    $order->updateAlbum();
 }
 
 $data = new AlbumsController();
@@ -53,14 +58,21 @@ $Albums = $data->getArtistAlbums();
                             </form>
 
                             <form method="post">
-                                <div role='button' class="card-body text-center" onclick="document.getElementById('viewAlbums<?php echo $Album->ID_Album ?>').click()">
-                                    <input type="hidden" name="IdOfAlbum" value="<?php echo $Album->ID_Album ?>">
-                                    <h5 class="card-title"><?php echo $Album->Name_Album ?></h5>
-                                </div>
-                                <button id="viewAlbums<?php echo $Album->ID_Album ?>" hidden><i class="fa fa-eye"></i></button>
-                            </form>
-                        </div>
 
+                                <div role='button' class="card-body text-center" ondblclick="document.getElementById('viewAlbums<?php echo $Album->ID_Album ?>').click()">
+
+                                    <input type="hidden" name="IdOfAlbum" value="<?php echo $Album->ID_Album ?>">
+                                    <input class="card-title" name="NameOfAlbum" value="<?php echo $Album->Name_Album ?>">
+
+                                </div>
+
+                                <button type="submit" name="GoToSongs" id="viewAlbums<?php echo $Album->ID_Album ?>" hidden><i class="fa fa-eye"></i></button>
+
+                                <button type="submit" name="Update" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
+
+                            </form>
+
+                        </div>
 
                     <?php endforeach; ?>
 

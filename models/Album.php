@@ -43,6 +43,19 @@ class Album
         $stmt->execute($data["albums"]);
     }
 
+    static public function update($data)
+    {
+        $requete = "UPDATE albums SET Name_Album=:Name_Album WHERE ID_Album=:ID_Album";
+
+        $stmt = DB::connect()->prepare($requete);
+
+        $stmt->bindParam(':ID_Album', $data['id']);
+        $stmt->bindParam(':Name_Album', $data['Album']);
+
+
+        $stmt->execute();
+    }
+
     static public function delete($id)
     {
         $stmt = DB::connect()->prepare("DELETE FROM `albums` WHERE ID_Album =:id");

@@ -35,6 +35,16 @@ class AlbumsController
         Album::add($data);
     }
 
+    public function updateAlbum()
+    {
+        $data = array(
+            'id' => $_POST["IdOfAlbum"],
+            'Album' => $_POST["NameOfAlbum"]
+        );
+
+        Album::update($data);
+    }
+
     public function deleteAlbum()
     {
         if (isset($_POST["idDelete"])) {
