@@ -20,12 +20,20 @@ class Song
 
     static public function add($data)
     {
-        $requete = "INSERT INTO `artists`(`Name_Artist`) VALUES (?),(?),(?)";
-        $requete.=",(?)";
+        $requete = "INSERT INTO `songs`(`Name_Song`,`Words_Song`,`ID_Album`) VALUES ";
+
+        for ($i = 1; $i <= $data["HowManyalbums"]; $i++) {
+
+            if ($data["HowManyalbums"] == $i) {
+                $requete .= "(?,?,?)";
+            } else {
+                $requete .= "(?,?,?),";
+            }
+        }
 
         $stmt = DB::connect()->prepare($requete);
 
-        $stmt->execute($data["artists"]);
+        $stmt->execute($data["songs"]);
     }
 
     //https://stackoverflow.com/questions/15209414/how-can-i-do-three-table-joins-in-an-update-query

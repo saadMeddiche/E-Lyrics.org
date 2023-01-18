@@ -1,17 +1,23 @@
 <?php
-if (isset($_POST["Ajouter"])) {
-    $url = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-    if ($url == "http://localhost/E-Lyrics.org/add?artist=758") {
+$artists;
+$url = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+if ($url == "http://localhost/E-Lyrics.org/add?artist=758") {
+    if (isset($_POST["Ajouter"])) {
         $order = new ArtistsController();
         $order->addArtists();
-    } else if ($url == "http://localhost/E-Lyrics.org/add?album=758") {
+    }
+} else if ($url == "http://localhost/E-Lyrics.org/add?album=758") {
+    if (isset($_POST["Ajouter"])) {
         $order = new AlbumsController();
         $order->addAlbums();
-    } else {
+    }
+} else {
+    if (isset($_POST["Ajouter"])) {
         $order = new SongsController();
         $order->addSongs();
     }
 }
+
 ?>
 <div class="container">
     <div class="row my-4">

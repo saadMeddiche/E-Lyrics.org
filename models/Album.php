@@ -4,7 +4,7 @@ class Album
     static public function getAll()
     {
 
-        $requete = "SELECT * FROM `albums`";
+        $requete = "SELECT * FROM `albums` INNER JOIN `artists` ON albums.ID_Artist = artists.ID_Artist";
 
         $stmt = DB::connect()->prepare($requete);
 

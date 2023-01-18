@@ -2,7 +2,7 @@
 require_once  './autoload.php';
 
 
-$pages = ['home', 'update', 'add', 'view','artists','albums'];
+$pages = ['home', 'update', 'add', 'view', 'artists', 'albums'];
 
 if (isset($_SESSION["logged"]) && $_SESSION["logged"] === true) {
 
@@ -13,6 +13,7 @@ if (isset($_SESSION["logged"]) && $_SESSION["logged"] === true) {
 
         if (in_array($_GET['page'], $pages)) {
             HomeController::IncludeFile($_GET['page']);
+            include_once "./views/includes/js/script.php";
         } else {
             HomeController::IncludeFile('404');
         }
