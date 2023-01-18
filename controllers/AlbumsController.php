@@ -18,26 +18,21 @@ class AlbumsController
     public function addAlbums()
     {
 
-        if (isset($_POST["Ajouter"])) {
-
-            $arr_albums = [];
+        $arr_albums = [];
 
 
-            for ($i = 1; $i <= $_POST["Train"]; $i++) {
+        for ($i = 1; $i <= $_POST["Train"]; $i++) {
 
-                array_push($arr_albums, $_POST["Album" . $i]);
-                array_push($arr_albums, $_SESSION["IdOfArtist"]);
-            }
-
-            $data = array(
-                'albums' => $arr_albums,
-                'HowManyalbums' => $_POST["Train"]
-            );
-
-            Album::add($data);
-
-
+            array_push($arr_albums, $_POST["Album" . $i]);
+            array_push($arr_albums, $_SESSION["IdOfArtist"]);
         }
+
+        $data = array(
+            'albums' => $arr_albums,
+            'HowManyalbums' => $_POST["Train"]
+        );
+
+        Album::add($data);
     }
 
     public function deleteAlbum()

@@ -11,32 +11,31 @@ class ArtistsController
     public function addArtists()
     {
 
-        if (isset($_POST["Ajouter"])) {
 
-            $arr_artist = [];
-
-
-            for ($i = 1; $i <= $_POST["Train"]; $i++) {
-
-                array_push($arr_artist, $_POST["Artist" . $i]);
-            }
-
-            $data = array(
-                'artists' => $arr_artist,
-                'HowManyArtists' => $_POST["Train"]
-            );
-
-            Artist::add($data);
-
-            // print_r($data['artists'][0]);
+        $arr_artist = [];
 
 
-            // print_r($arr_artist);
-            // print_r($arr_song);
-            // print_r($arr_album);
-            // print_r($arr_words);
+        for ($i = 1; $i <= $_POST["Train"]; $i++) {
 
+            array_push($arr_artist, $_POST["Artist" . $i]);
         }
+
+        $data = array(
+            'artists' => $arr_artist,
+            'HowManyArtists' => $_POST["Train"]
+        );
+
+        Artist::add($data);
+    }
+
+    public function updateArtist()
+    {
+        $data = array(
+            'id' => $_POST["IdOfArtist"],
+            'Artist' => $_POST["NameOfArtist"]
+        );
+
+        Artist::update($data);
     }
 
     public function deleteArtist()

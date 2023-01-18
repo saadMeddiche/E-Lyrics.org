@@ -4,11 +4,16 @@ if (isset($_POST["idDelete"])) {
     $order->deleteArtist();
 }
 
-if (isset($_POST["IdOfArtist"])) {
+if (isset($_POST["GoToAlbums"])) {
     // die(print_r($_POST["IdOfArtist"]));
 
     $_SESSION["IdOfArtist"] = $_POST["IdOfArtist"];
     Redirect::to('albums');
+}
+
+if (isset($_POST["Update"])) {
+    $order = new ArtistsController();
+    $order->updateArtist();
 }
 
 $data = new ArtistsController();
@@ -46,18 +51,25 @@ $artists = $data->getAllArtists();
                 <div class="card-body bg-light d-flex flex-wrap gap-3">
                     <?php foreach ($artists as $artist) : ?>
                         <div class="card w-20" style="width: 18rem;">
+                            <div class="d-flex justify-content-between">
+                                <form method="post">
+                                    <input type="hidden" name="idDelete" value="<?php echo $artist->ID_Artist ?>">
+                                    <button class="btn btn-sm btn-danger" onclick="var test='Are You Sure !' ; return confirm(test);"><i class="fa fa-x"></i></button>
+                                </form>
+
+                            </div>
+
 
                             <form method="post">
-                                <input type="hidden" name="idDelete" value="<?php echo $artist->ID_Artist ?>">
-                                <button class="btn btn-sm btn-danger" onclick="var test='Are You Sure !' ; return confirm(test);"><i class="fa fa-x"></i></button>
-                            </form>
 
-                            <form method="post">
-                                <div role='button' class="card-body text-center" onclick="document.getElementById('viewAlbums<?php echo $artist->ID_Artist ?>').click()">
+                                <div role='button' class="card-body text-center" ondblclick="document.getElementById('viewAlbums<?php echo $artist->ID_Artist ?>').click()">
                                     <input type="hidden" name="IdOfArtist" value="<?php echo $artist->ID_Artist ?>">
-                                    <h5 class="card-title"><?php echo $artist->Name_Artist ?></h5>
+                                    <input class="" name="NameOfArtist" value="<?php echo $artist->Name_Artist ?>">
                                 </div>
-                                <button id="viewAlbums<?php echo $artist->ID_Artist ?>" hidden><i class="fa fa-eye"></i></button>
+
+                                <button type="submit" name="GoToAlbums" id="viewAlbums<?php echo $artist->ID_Artist ?>" hidden><i class="fa fa-eye"></i></button>
+
+                                <button type="submit" name="Update" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
                             </form>
 
                         </div>
