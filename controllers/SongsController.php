@@ -19,6 +19,12 @@ class SongsController
         }
     }
 
+    public function getSongsFromAlbum()
+    {
+        $songs = Song::getFromAlbum($_SESSION["IdOfAlbum"]);
+        return $songs;
+    }
+
     public function addSongs()
     {
         if (isset($_POST["Ajouter"])) {

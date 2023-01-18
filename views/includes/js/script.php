@@ -1,13 +1,11 @@
 <?php
 $data = new ArtistsController();
 $artists = $data->getAllArtists();
-print_r($artists);
+
 $data = new AlbumsController();
 $albums = $data->getAllAlbums();
-print_r($albums);
 ?>
 <script>
-    // var Multiple = document.getElementById("Multiple").value;
     duplication(1);
 
     function duplication($multiple) {
@@ -34,8 +32,8 @@ print_r($albums);
                     <div class="form-group p-2">
                         <label for="Album${i}">Album ${i}</label>
                         <select class="form-select" name="Album${i}" aria-label="Default select example">
-                            <?php foreach ($albums as $album ) : ?>
-                            <option value="<?php echo $album->ID_Album?>"><?php echo $album->Name_Album?> [<?php echo $album->Name_Artist?>]</option>
+                            <?php foreach ($albums as $album) : ?>
+                            <option value="<?php echo $album->ID_Album ?>"><?php echo $album->Name_Album ?> [<?php echo $album->Name_Artist ?>]</option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -113,6 +111,42 @@ print_r($albums);
                 </div>
             </div>
             `
+                }
+
+                document.getElementById("Cards").innerHTML = text;
+            }
+
+        }
+
+        if (document.URL == "http://localhost/E-Lyrics.org/add?songs=758") {
+
+            if ($multiple <= 0) {
+                alert("Can't Be 0 or lower then 0");
+            } else if ($multiple > 1000) {
+
+                alert("only 1000 or less , so your navigator can handle it");
+
+            } else {
+
+                document.getElementById("Train").value = $multiple;
+
+                var text = ``;
+
+                for (var i = 1; i <= $multiple; i++) {
+
+                    text += `
+                    <div class="card-header m-2">
+                        <input type="hidden" name="Album${i}" value="<?php echo $_SESSION["IdOfAlbum"]?>" >
+                        <div class="form-group p-2">
+                            <label for="Song${i}">Song ${i}</label>
+                            <input type="text" name="Song${i}" class="form-control" placeholder="Song">
+                        </div>
+                        <div class="form-group p-2">
+                            <label for="Words${i}">Words ${i}</label>
+                            <textarea style="height:150px" type="text" name="Words${i}" class="form-control" placeholder="Words"></textarea>
+                        </div>
+                    </div>
+                    `
                 }
 
                 document.getElementById("Cards").innerHTML = text;

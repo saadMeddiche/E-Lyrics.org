@@ -4,6 +4,12 @@ if (isset($_POST["idDelete"])) {
     $order->deleteAlbum();
 }
 
+if (isset($_POST["IdOfAlbum"])) {
+
+    $_SESSION["IdOfAlbum"] = $_POST["IdOfAlbum"];
+    Redirect::to('songs');
+}
+
 $data = new AlbumsController();
 $Albums = $data->getArtistAlbums();
 
@@ -15,7 +21,7 @@ $Albums = $data->getArtistAlbums();
     <div class="row my-4">
         <div class="col-md-12 mx-auto">
             <div class="card">
-                <div class="card-header text-center">Artists</div>
+                <div class="card-header text-center">Albums</div>
 
                 <div class="container d-flex justify-content-between align-items-center p-2">
                     <div>
@@ -40,19 +46,22 @@ $Albums = $data->getArtistAlbums();
 
                 <div class="card-body bg-light d-flex flex-wrap gap-3">
                     <?php foreach ($Albums as $Album) : ?>
-                        <a href="./albums">
-                            <div class="card w-20" style="width: 18rem;">
-                                <div class="card-body text-center">
+                        <div class="card w-20" style="width: 18rem;">
+                            <form method="post">
+                                <input type="hidden" name="idDelete" value="<?php echo $Album->ID_Album ?>">
+                                <button class="btn btn-sm btn-danger" onclick="var test='Are You Sure !' ; return confirm(test);"><i class="fa fa-x"></i></button>
+                            </form>
 
-                                    <form method="post">
-                                        <input type="hidden" name="idDelete" value="<?php echo $Album->ID_Album ?>">
-                                        <button class="btn btn-sm btn-danger" onclick="var test='Are You Sure !' ; return confirm(test);"><i class="fa fa-trash"></i></button>
-                                    </form>
-
+                            <form method="post">
+                                <div role='button' class="card-body text-center" onclick="document.getElementById('viewAlbums<?php echo $Album->ID_Album ?>').click()">
+                                    <input type="hidden" name="IdOfAlbum" value="<?php echo $Album->ID_Album ?>">
                                     <h5 class="card-title"><?php echo $Album->Name_Album ?></h5>
                                 </div>
-                            </div>
-                        </a>
+                                <button id="viewAlbums<?php echo $Album->ID_Album ?>" hidden><i class="fa fa-eye"></i></button>
+                            </form>
+                        </div>
+
+
                     <?php endforeach; ?>
 
                 </div>

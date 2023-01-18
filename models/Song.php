@@ -10,6 +10,14 @@ class Song
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
+    static public function getFromAlbum()
+    {
+        $requete = "SELECT * FROM `songs` WHERE ID_Album=:Id_Album";
+        $stmt = DB::connect()->prepare($requete);
+        $stmt->execute(['Id_Album' => $_SESSION["IdOfAlbum"]]);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
     static public function getSong($data)
     {
         $requete = "SELECT * FROM `songs` INNER JOIN `albums` JOIN `artists` ON songs.ID_Album = albums.ID_Album and albums.ID_Artist = artists.ID_Artist WHERE ID_Song = " . $data["id"];

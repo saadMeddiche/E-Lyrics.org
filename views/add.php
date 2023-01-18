@@ -11,6 +11,11 @@ if ($url == "http://localhost/E-Lyrics.org/add?artist=758") {
         $order = new AlbumsController();
         $order->addAlbums();
     }
+} else if ($url == "http://localhost/E-Lyrics.org/add?songs=758") {
+    if (isset($_POST["Ajouter"])) {
+        $order = new SongsController();
+        $order->addSongs();
+    }
 } else {
     if (isset($_POST["Ajouter"])) {
         $order = new SongsController();
