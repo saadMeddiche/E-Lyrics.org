@@ -2,7 +2,7 @@
 require_once  './autoload.php';
 
 
-$pages = ['home', 'update', 'add', 'view'];
+$pages = ['home', 'update', 'add', 'view','artists','albums'];
 
 if (isset($_SESSION["logged"]) && $_SESSION["logged"] === true) {
 

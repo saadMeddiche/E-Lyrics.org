@@ -18,6 +18,16 @@ class Song
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
+    static public function add($data)
+    {
+        $requete = "INSERT INTO `artists`(`Name_Artist`) VALUES (?),(?),(?)";
+        $requete.=",(?)";
+
+        $stmt = DB::connect()->prepare($requete);
+
+        $stmt->execute($data["artists"]);
+    }
+
     //https://stackoverflow.com/questions/15209414/how-can-i-do-three-table-joins-in-an-update-query
     static public function update($data)
     {
