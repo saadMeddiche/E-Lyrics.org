@@ -15,41 +15,35 @@ class AlbumsController
         return $artists;
     }
 
-    // public function addArtists()
-    // {
+    public function addAlbums()
+    {
 
-    //     if (isset($_POST["Ajouter"])) {
+        if (isset($_POST["Ajouter"])) {
 
-    //         $arr_artist = [];
-
-
-    //         for ($i = 1; $i <= $_POST["Train"]; $i++) {
-
-    //             array_push($arr_artist, $_POST["Artist" . $i]);
-    //         }
-
-    //         $data = array(
-    //             'artists' => $arr_artist,
-    //             'HowManyArtists' => $_POST["Train"]
-    //         );
-
-    //         Artist::add($data);
-
-    //         // print_r($data['artists'][0]);
+            $arr_albums = [];
 
 
-    //         // print_r($arr_artist);
-    //         // print_r($arr_song);
-    //         // print_r($arr_album);
-    //         // print_r($arr_words);
+            for ($i = 1; $i <= $_POST["Train"]; $i++) {
 
-    //     }
-    // }
+                array_push($arr_albums, $_POST["Album" . $i]);
+                array_push($arr_albums, $_SESSION["IdOfArtist"]);
+            }
 
-    // public function deleteArtist()
-    // {
-    //     if (isset($_POST["idDelete"])) {
-    //         Artist::delete($_POST["idDelete"]);
-    //     }
-    // }
+            $data = array(
+                'albums' => $arr_albums,
+                'HowManyalbums' => $_POST["Train"]
+            );
+
+            Album::add($data);
+
+
+        }
+    }
+
+    public function deleteAlbum()
+    {
+        if (isset($_POST["idDelete"])) {
+            Album::delete($_POST["idDelete"]);
+        }
+    }
 }

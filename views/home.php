@@ -27,7 +27,7 @@ $statistics = $datas->statistics();
         <div class="card-body">
             <a href="./artists">
                 <h5 class="card-title">Les Artistes</h5>
-                <p class="card-text"><?php echo $statistics[0]->Num_Song ?></p>
+                <p class="card-text"><?php echo $statistics[0]->Num_Artist ?></p>
             </a>
 
         </div>
@@ -35,7 +35,7 @@ $statistics = $datas->statistics();
     <div class="card" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title">Les Titres</h5>
-            <p class="card-text"><?php echo $statistics[0]->Num_Artist ?></p>
+            <p class="card-text"><?php echo $statistics[0]->Num_Song  ?></p>
         </div>
     </div>
     <div class="card" style="width: 18rem;">

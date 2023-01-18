@@ -1,8 +1,8 @@
 <?php
-// if (isset($_POST["idDelete"])) {
-//     $order = new AlbumsController();
-//     $order->deleteArtist();
-// }
+if (isset($_POST["idDelete"])) {
+    $order = new AlbumsController();
+    $order->deleteAlbum();
+}
 
 $data = new AlbumsController();
 $Albums = $data->getArtistAlbums();
@@ -19,7 +19,7 @@ $Albums = $data->getArtistAlbums();
 
                 <div class="container d-flex justify-content-between align-items-center p-2">
                     <div>
-                        <a href="./add?artist=758" class="btn btn-sm btn-primary mr-2 ">
+                        <a href="./add?album=758" class="btn btn-sm btn-primary mr-2 ">
                             <i class="fas fa-plus">
                             </i>
                         </a>

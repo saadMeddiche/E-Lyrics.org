@@ -82,6 +82,39 @@ function duplication($multiple){
     
     }
 
+    if(document.URL=="http://localhost/E-Lyrics.org/add?album=758"){
+
+    if($multiple<=0){
+        alert("Can't Be 0 or lower then 0");
+    }else if
+    ($multiple>1000){
+
+        alert("only 1000 or less , so your navigator can handle it");
+
+    }else{
+
+        document.getElementById("Train").value= $multiple;
+
+        var text=`
+        `;
+    
+        for(var i=1; i <= $multiple ; i++){
+    
+            text+=`
+            <div class="card-header m-2">
+                <div class="form-group p-2">
+                    <label for="Album${i}">Album ${i}</label>
+                    <input type="text" name="Album${i}" class="form-control" placeholder="Artist">
+                </div>
+            </div>
+            `
+        }
+    
+        document.getElementById("Cards").innerHTML= text;
+    }
+
+}
+
 
     
 }

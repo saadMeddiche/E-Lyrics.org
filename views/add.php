@@ -4,6 +4,9 @@ if (isset($_POST["Ajouter"])) {
     if ($url == "http://localhost/E-Lyrics.org/add?artist=758") {
         $order = new ArtistsController();
         $order->addArtists();
+    } else if ($url == "http://localhost/E-Lyrics.org/add?album=758") {
+        $order = new AlbumsController();
+        $order->addAlbums();
     } else {
         $order = new SongsController();
         $order->addSongs();
