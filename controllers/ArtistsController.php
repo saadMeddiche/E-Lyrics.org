@@ -44,4 +44,17 @@ class ArtistsController
             Artist::delete($_POST["idDelete"]);
         }
     }
+
+
+    public function findArtists()
+    {
+        if (isset($_POST["search"])) {
+            $data = array(
+                'search' => $_POST['search']
+            );
+
+            $songs = Artist::search($data);
+            return $songs;
+        }
+    }
 }

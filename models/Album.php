@@ -61,4 +61,17 @@ class Album
         $stmt = DB::connect()->prepare("DELETE FROM `albums` WHERE ID_Album =:id");
         $stmt->execute([":id" => $id]);
     }
+    
+    static public function search($data)
+    {
+        $search = $data["search"];
+
+        $requete = "SELECT * FROM `albums` WHERE Name_Album LIKE ? ";
+
+        $stmt = DB::connect()->prepare($requete);
+
+        $stmt->execute(["%" . $search . "%"]);
+
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
 }

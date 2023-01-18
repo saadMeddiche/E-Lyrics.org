@@ -51,4 +51,17 @@ class Artist
         $stmt = DB::connect()->prepare("DELETE FROM `artists` WHERE ID_Artist =:id");
         $stmt->execute([":id" => $id]);
     }
+
+    static public function search($data)
+    {
+        $search = $data["search"];
+
+        $requete = "SELECT * FROM `artists` WHERE Name_Artist LIKE ? ";
+
+        $stmt = DB::connect()->prepare($requete);
+
+        $stmt->execute(["%" . $search . "%"]);
+
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
 }

@@ -88,7 +88,7 @@ class SongsController
                 'search' => $_POST['search']
             );
 
-            $songs = Song::searchEmploye($data);
+            $songs = Song::searchSongs($data);
             return $songs;
         }
     }

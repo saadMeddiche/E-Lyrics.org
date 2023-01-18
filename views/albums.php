@@ -15,8 +15,14 @@ if (isset($_POST["Update"])) {
     $order->updateAlbum();
 }
 
-$data = new AlbumsController();
-$Albums = $data->getArtistAlbums();
+if (isset($_POST["find"])) {
+    $data = new AlbumsController();
+    $Albums = $data->findAlbums();
+} else {
+    $data = new AlbumsController();
+    $Albums = $data->getArtistAlbums();
+}
+
 
 // die(print_r($_SESSION["IdOfArtist"]));
 

@@ -51,4 +51,16 @@ class AlbumsController
             Album::delete($_POST["idDelete"]);
         }
     }
+
+    public function findAlbums()
+    {
+        if (isset($_POST["search"])) {
+            $data = array(
+                'search' => $_POST['search']
+            );
+
+            $songs = Album::search($data);
+            return $songs;
+        }
+    }
 }

@@ -4,13 +4,19 @@ if (isset($_POST["idDelete"])) {
     $order->deleteSong();
 }
 
-if(isset($_POST["UpdateSong"])){
+if (isset($_POST["UpdateSong"])) {
     $order = new SongsController();
     $order->updateSong();
 }
 
-$data = new SongsController();
-$Songs = $data->getSongsFromAlbum();
+if (isset($_POST["findSongOfAnAlbum"])) {
+    $data = new SongsController();
+    $Songs = $data->findSongs();
+} else {
+    $data = new SongsController();
+    $Songs = $data->getSongsFromAlbum();
+}
+
 
 
 // die(print_r($_SESSION["IdOfArtist"]));
@@ -38,7 +44,7 @@ $Songs = $data->getSongsFromAlbum();
                     <div>
                         <form method="post" class="d-flex flex-row justify-content-end">
                             <input type="text" name="search" placeholder="Recherche">
-                            <button class="btn btn-info btn-sm" name="find" type="submit"><i class="fas fa-search"></i></button>
+                            <button class="btn btn-info btn-sm" name="findSongOfAnAlbum" type="submit"><i class="fas fa-search"></i></button>
                         </form>
                     </div>
 

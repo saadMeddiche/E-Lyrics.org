@@ -69,16 +69,28 @@ class Song
         $stmt->execute([":id" => $id]);
     }
 
-    static public function searchEmploye($data)
+    static public function searchSongs($data)
     {
-        $search = $data["search"];
+        if (isset($_POST["findSongOfAnAlbum"])) {
+            $search = $data["search"];
 
-        $requete = "SELECT * FROM `songs` INNER JOIN `albums` JOIN `artists` ON songs.ID_Album = albums.ID_Album and albums.ID_Artist = artists.ID_Artist WHERE artists.Name_Artist LIKE ? OR songs.Name_Song LIKE ? OR albums.Name_Album LIKE ?";
+            $requete = "SELECT * FROM `songs` WHERE ID_Album=? AND Name_Song LIKE ? ";
 
-        $stmt = DB::connect()->prepare($requete);
+            $stmt = DB::connect()->prepare($requete);
 
-        $stmt->execute(["%" . $search . "%", "%" . $search . "%", "%" . $search . "%"]);
+            $stmt->execute([$_SESSION["IdOfAlbum"],"%" . $search . "%"]);
 
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            $search = $data["search"];
+
+            $requete = "SELECT * FROM `songs` INNER JOIN `albums` JOIN `artists` ON songs.ID_Album = albums.ID_Album and albums.ID_Artist = artists.ID_Artist WHERE artists.Name_Artist LIKE ? OR songs.Name_Song LIKE ? OR albums.Name_Album LIKE ?";
+
+            $stmt = DB::connect()->prepare($requete);
+
+            $stmt->execute(["%" . $search . "%", "%" . $search . "%", "%" . $search . "%"]);
+
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        }
     }
 }

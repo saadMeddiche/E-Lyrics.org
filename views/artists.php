@@ -16,8 +16,14 @@ if (isset($_POST["Update"])) {
     $order->updateArtist();
 }
 
-$data = new ArtistsController();
-$artists = $data->getAllArtists();
+if (isset($_POST["find"])) {
+    $data = new ArtistsController();
+    $artists = $data->findArtists();
+} else {
+    $data = new ArtistsController();
+    $artists = $data->getAllArtists();
+}
+
 // die(print_r($artists));
 ?>
 
