@@ -136,7 +136,7 @@ $albums = $data->getAllAlbums();
 
                     text += `
                     <div class="card-header m-2">
-                        <input type="hidden" name="Album${i}" value="<?php echo $_SESSION["IdOfAlbum"]?>" >
+                        <input type="hidden" name="Album${i}" value="<?php echo $_SESSION["IdOfAlbum"] ?>" >
                         <div class="form-group p-2">
                             <label for="Song${i}">Song ${i}</label>
                             <input type="text" name="Song${i}" class="form-control" placeholder="Song">
@@ -153,5 +153,16 @@ $albums = $data->getAllAlbums();
             }
 
         }
+    }
+
+    function fillSong($id) {
+        var NameOfSong = document.getElementById("NameOfSong" + $id).innerHTML;
+        var WordsOfSong = document.getElementById("WordsOfSong" + $id).value;
+
+        document.getElementById("ID_Song").value= $id
+        document.getElementById("Song").value = NameOfSong;
+        document.getElementById("words").innerHTML = WordsOfSong;
+
+
     }
 </script>

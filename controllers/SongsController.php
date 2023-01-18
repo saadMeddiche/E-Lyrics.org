@@ -60,6 +60,18 @@ class SongsController
 
             Song::update($data);
         }
+
+        if (isset($_POST["UpdateSong"])) {
+            $data = array(
+                'id' => $_POST['ID_Song'],
+                'Song' => $_POST['Song'],
+                'Artist' => $_SESSION["IdOfArtist"],
+                'Album' => $_SESSION["IdOfAlbum"],
+                'Words' => $_POST['Words']
+            );
+
+            Song::update($data);
+        }
     }
 
     public function deleteSong()
