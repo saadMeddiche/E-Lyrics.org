@@ -50,15 +50,14 @@ class Song
 
         // $requete = "UPDATE songs s JOIN albums al ON s.ID_Album = al.ID_Album SET s.Name_Song=:Name_Song, s.Words_Song=:Words_Song, al.Name_Album=:Name_Album WHERE s.ID_Song =:ID_Song";
 
-        $requete = "UPDATE songs s JOIN albums al JOIN artists ar ON s.ID_Album = al.ID_Album AND al.ID_Artist = ar.ID_Artist SET s.Name_Song=:Name_Song, s.Words_Song=:Words_Song, al.Name_Album=:Name_Album ,ar.Name_Artist=:Name_Artist WHERE s.ID_Song =:ID_Song";
+        $requete = "UPDATE songs SET Name_Song=:Name_Song, Words_Song=:Words_Song, ID_Album=:ID_Album  WHERE ID_Song =:ID_Song";
 
         $stmt = DB::connect()->prepare($requete);
 
         $stmt->bindParam(':ID_Song', $data['id']);
         $stmt->bindParam(':Name_Song', $data['Song']);
         $stmt->bindParam(':Words_Song', $data['Words']);
-        $stmt->bindParam(':Name_Artist', $data['Artist']);
-        $stmt->bindParam(':Name_Album', $data['Album']);
+        $stmt->bindParam(':ID_Album', $data['Album']);
 
         $stmt->execute();
     }
@@ -78,7 +77,7 @@ class Song
 
             $stmt = DB::connect()->prepare($requete);
 
-            $stmt->execute([$_SESSION["IdOfAlbum"],"%" . $search . "%"]);
+            $stmt->execute([$_SESSION["IdOfAlbum"], "%" . $search . "%"]);
 
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         } else {

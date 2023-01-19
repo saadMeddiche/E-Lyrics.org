@@ -53,7 +53,6 @@ class SongsController
             $data = array(
                 'id' => $_POST['ID_Song'],
                 'Song' => $_POST['Song'],
-                'Artist' => $_POST['Artist'],
                 'Album' => $_POST['Album'],
                 'Words' => $_POST['Words']
             );
