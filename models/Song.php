@@ -4,7 +4,7 @@ class Song
 
     static public function getAll()
     {
-        $requete = "SELECT * FROM `songs` INNER JOIN `albums` JOIN `artists` ON songs.ID_Album = albums.ID_Album and albums.ID_Artist = artists.ID_Artist";
+        $requete = "SELECT * FROM `songs` INNER JOIN `albums` JOIN `artists` ON songs.ID_Album = albums.ID_Album and albums.ID_Artist = artists.ID_Artist ORDER BY  Name_Song";
         $stmt = DB::connect()->prepare($requete);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);

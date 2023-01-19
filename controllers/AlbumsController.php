@@ -33,6 +33,9 @@ class AlbumsController
         );
 
         Album::add($data);
+
+        Redirect::to('albums');
+
     }
 
     public function updateAlbum()

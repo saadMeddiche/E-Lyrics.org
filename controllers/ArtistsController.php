@@ -26,6 +26,8 @@ class ArtistsController
         );
 
         Artist::add($data);
+
+        Redirect::to('artists');
     }
 
     public function updateArtist()

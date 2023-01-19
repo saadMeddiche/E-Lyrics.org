@@ -8,6 +8,25 @@ $albums = $data->getAllAlbums();
 <script>
     duplication(1);
 
+    function updateAnimation(id, mod) {
+
+
+        var FrontValue = document.getElementById("FrontValue" + id).style.display
+
+        var InputValue = document.getElementById("InputValue" + id).style.display
+
+        var ButtonOk = document.getElementById("ButtonOk" + id).style.display
+
+        var ButtonUpdate = document.getElementById("ButtonUpdate" + id)
+
+        if (mod == 0) {
+            ButtonUpdate.style.display = "none"
+            FrontValue = "none"
+        } else {
+
+        }
+    }
+
     function duplication($multiple) {
 
         if (document.URL == "http://localhost/E-Lyrics.org/add") {
@@ -136,7 +155,7 @@ $albums = $data->getAllAlbums();
 
                     text += `
                     <div class="card-header m-2">
-                        <input type="hidden" name="Album${i}" value="<?php echo $_SESSION["IdOfAlbum"] ?>" >
+                        <input type="hidden" name="Album${i}" value="<?php if (isset($_SESSION["IdOfAlbum"])) echo $_SESSION["IdOfAlbum"]  ?>" >
                         <div class="form-group p-2">
                             <label for="Song${i}">Song ${i}</label>
                             <input type="text" name="Song${i}" class="form-control" placeholder="Song">

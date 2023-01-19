@@ -43,8 +43,8 @@ if (isset($_POST["find"])) {
                             <i class="fas fa-home">
                             </i>
                         </a>
-
                     </div>
+
                     <div>
                         <form method="post" class="d-flex flex-row justify-content-end">
                             <input type="text" name="search" placeholder="Recherche">
@@ -68,15 +68,23 @@ if (isset($_POST["find"])) {
 
                             <form method="post">
 
-                                <div role='button' class="card-body text-center" ondblclick="document.getElementById('viewAlbums<?php echo $artist->ID_Artist ?>').click()">
+                                <div role='button' class="card-body text-center h-100" ondblclick="document.getElementById('viewAlbums<?php echo $artist->ID_Artist ?>').click()">
                                     <input type="hidden" name="IdOfArtist" value="<?php echo $artist->ID_Artist ?>">
-                                    <input class="" name="NameOfArtist" value="<?php echo $artist->Name_Artist ?>">
+
+                                    <h2 id="FrontValue<?php echo $artist->ID_Artist ?>"><?php echo $artist->Name_Artist ?></h2>
+                                    <div class="d-flex">
+                                        <input name="NameOfArtist" id="InputValue<?php echo $artist->ID_Artist ?>" class="text-center fs-5 font-weight-bold" value="<?php echo $artist->Name_Artist ?>">
+                                        <button id="ButtonOk<?php echo $artist->ID_Artist ?>"><i class="fas fa-o"></i></button>
+                                    </div>
+
                                 </div>
 
                                 <button type="submit" name="GoToAlbums" id="viewAlbums<?php echo $artist->ID_Artist ?>" hidden><i class="fa fa-eye"></i></button>
-
-                                <button type="submit" name="Update" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
                             </form>
+
+                            <div id="ButtonUpdate<?php echo $artist->ID_Artist ?>">
+                                <button onclick="updateAnimation(<?php echo $artist->ID_Artist ?>,0)" type="submit" name="Update" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
+                            </div>
 
                         </div>
                     <?php endforeach; ?>

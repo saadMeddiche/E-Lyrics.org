@@ -44,6 +44,9 @@ class SongsController
             );
 
             Song::add($data);
+
+            Redirect::to('songs');
+
         }
     }
 

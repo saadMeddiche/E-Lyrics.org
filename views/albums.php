@@ -44,6 +44,10 @@ if (isset($_POST["find"])) {
                             <i class="fas fa-home">
                             </i>
                         </a>
+                        <a href="./artists" class="btn btn-sm btn-success mary mr-2 ">
+                            <i class="fas fa-arrow-left">
+                            </i>
+                        </a>
 
                     </div>
                     <div>

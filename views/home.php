@@ -26,34 +26,11 @@ if (isset($_POST['find'])) {
     }
 }
 
-$datas = new CountController();
-$statistics = $datas->statistics();
+
 
 
 ?>
-<div class="container d-flex  justify-content-between text-center gap-5 mt-5">
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <a href="./artists">
-                <h5 class="card-title">Les Artistes</h5>
-                <p class="card-text"><?php echo $statistics[0]->Num_Artist ?></p>
-            </a>
 
-        </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Les Titres</h5>
-            <p class="card-text"><?php echo $statistics[0]->Num_Song  ?></p>
-        </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Les Utilisateurs</h5>
-            <p class="card-text"><?php echo $statistics[0]->Num_User ?></p>
-        </div>
-    </div>
-</div>
 <div class="container">
     <div class="row my-4">
         <div class="col-md-10 mx-auto">
@@ -66,6 +43,7 @@ $statistics = $datas->statistics();
                         </button>
                     </form>
 
+
                     <a href="./add" class="btn btn-sm btn-primary mr-2 mb-2">
                         <i class="fas fa-plus">
                         </i>
@@ -74,12 +52,6 @@ $statistics = $datas->statistics();
                         <i class="fas fa-home">
                         </i>
                     </a>
-                    <form action="" method="post">
-                        <button type="submit" name="triage" class="btn btn-sm btn-danger mary mr-2 mb-2">
-                            <i class="fas fa-circle"></i>
-                        </button>
-
-                    </form>
 
                     <form method="post" class="d-flex flex-row justify-content-end" action="">
                         <input type="text" name="search" placeholder="Recherche">
@@ -89,7 +61,29 @@ $statistics = $datas->statistics();
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">Song</th>
+                                <th scope="col" class="d-flex justify-content-between align-items-center">
+                                    Song
+
+                                    <form method="post" class="d-flex align-items-center">
+                                        <div class="">
+                                            <?php if (1 == 0) { ?>
+                                                <div class="d-flex align-items-center">
+                                                    <i role="button" style="position:absolute;" class="fas fa-caret-up" onclick="document.getElementById('Xs72he').click()"></i>
+                                                </div>
+                                            <?php } ?>
+
+                                            <?php if (1 == 0) { ?>
+
+                                                <div class="d-flex align-items-center">
+                                                    <i role="button" class="fas fa-caret-down" onclick="document.getElementById('Xs72he').click()"></i>
+                                                </div>
+                                            <?php } ?>
+
+                                        </div>
+
+                                        <button type="submit" name="triage" id="Xs72he" hidden></button>
+                                    </form>
+                                </th>
                                 <th scope="col">Artist</th>
                                 <th scope="col">Album</th>
                                 <th scope="col">Action</th>

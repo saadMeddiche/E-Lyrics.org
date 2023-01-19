@@ -39,6 +39,10 @@ if (isset($_POST["findSongOfAnAlbum"])) {
                             <i class="fas fa-home">
                             </i>
                         </a>
+                        <a href="./albums" class="btn btn-sm btn-success mary mr-2 ">
+                            <i class="fas fa-arrow-left">
+                            </i>
+                        </a>
 
                     </div>
                     <div>
