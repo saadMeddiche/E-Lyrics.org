@@ -7,8 +7,7 @@ class HomeController
     {
         $array_paths = array(
             'views/',
-            'views/includes/',
-            'views/adds/'
+            'views/includes/'
         );
 
         foreach ($array_paths as $path) {

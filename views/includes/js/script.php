@@ -159,10 +159,24 @@ $albums = $data->getAllAlbums();
         var NameOfSong = document.getElementById("NameOfSong" + $id).innerHTML;
         var WordsOfSong = document.getElementById("WordsOfSong" + $id).value;
 
-        document.getElementById("ID_Song").value= $id
+        document.getElementById("ID_Song").value = $id
         document.getElementById("Song").value = NameOfSong;
         document.getElementById("words").innerHTML = WordsOfSong;
 
+
+    }
+
+    function fillHome(id) {
+        alert("test");
+        var NameArtist = document.getElementById("NameOfSong" + id).innerHTML
+        var NameSong = document.getElementById("NameOfArtist" + id).innerHTML
+        var NameAlbum = document.getElementById("NameOfAlbum" + id).innerHTML
+        var WordsSong = document.getElementById("wordsOFSong" + id).value
+
+        document.getElementById("Artist").value = NameArtist
+        document.getElementById("Song").value = NameSong
+        document.getElementById("Album").value = NameAlbum
+        document.getElementById("Words").value = WordsSong
 
     }
 </script>

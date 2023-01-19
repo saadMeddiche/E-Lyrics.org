@@ -13,8 +13,17 @@ if (isset($_POST['find'])) {
     $data = new SongsController();
     $songs = $data->findSongs();
 } else {
-    $data = new SongsController();
-    $songs = $data->getAllSongs();
+    if (isset($_POST["triage"]) && !isset($_SESSION["before"])) {
+        $data = new SongsController();
+        $songs = array_reverse($data->getAllSongs());
+
+        $_SESSION["before"] = "haha";
+    } else {
+        $data = new SongsController();
+        $songs = $data->getAllSongs();
+
+        unset($_SESSION["before"]);
+    }
 }
 
 $datas = new CountController();
@@ -65,11 +74,18 @@ $statistics = $datas->statistics();
                         <i class="fas fa-home">
                         </i>
                     </a>
+                    <form action="" method="post">
+                        <button type="submit" name="triage" class="btn btn-sm btn-danger mary mr-2 mb-2">
+                            <i class="fas fa-circle"></i>
+                        </button>
+
+                    </form>
 
                     <form method="post" class="d-flex flex-row justify-content-end" action="">
                         <input type="text" name="search" placeholder="Recherche">
                         <button class="btn btn-info btn-sm" name="find" type="submit"><i class="fas fa-search"></i></button>
                     </form>
+
                     <table class="table">
                         <thead>
                             <tr>
@@ -82,9 +98,9 @@ $statistics = $datas->statistics();
                         <tbody>
                             <?php foreach ($songs as $song) : ?>
                                 <tr>
-                                    <th scope="row"><?php echo $song->Name_Song ?></th>
-                                    <td><?php echo $song->Name_Artist ?></td>
-                                    <td><?php echo $song->Name_Album ?></td>
+                                    <th scope="row" id="NameOfSong<?php echo $song->ID_Song ?>"><?php echo $song->Name_Song ?></th>
+                                    <td id="NameOfArtist<?php echo $song->ID_Song ?>"><?php echo $song->Name_Artist ?></td>
+                                    <td id="NameOfAlbum<?php echo $song->ID_Song ?>"><?php echo $song->Name_Album ?></td>
 
                                     <td class="d-flex flex-row gap-2">
                                         <form action="update" method="post">
@@ -95,10 +111,8 @@ $statistics = $datas->statistics();
                                             <input type="hidden" name="idDelete" value="<?php echo $song->ID_Song ?>">
                                             <button class="btn btn-sm btn-danger" onclick="var test='Are You Sure !' ; return confirm(test);"><i class="fa fa-trash"></i></button>
                                         </form>
-                                        <form action="view" method="post">
-                                            <input type="hidden" name="idView" value="<?php echo $song->ID_Song ?>">
-                                            <button class="btn btn-sm btn-success"><i class="fa fa-eye"></i></button>
-                                        </form>
+                                        <input type="hidden" name="wordsOfSong" id="wordsOFSong<?php echo $song->ID_Song ?>" value="<?php echo $song->Words_Song ?>">
+                                        <button onclick="fillHome(<?php echo $song->ID_Song ?>)" class="btn btn-sm btn-success" data-bs-toggle="modal" href="#exampleModalToggle"><i class="fa fa-eye"></i></button>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -109,5 +123,37 @@ $statistics = $datas->statistics();
             </div>
         </div>
 
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel">Modal 1</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group p-2">
+                    <label for="Song">Song</label>
+                    <input type="text" name="Song" id="Song" class="form-control" placeholder="Song">
+                </div>
+                <div class="form-group p-2">
+                    <label for="Album">Album</label>
+                    <input type="text" name="Album" id="Album" class="form-control" placeholder="Album">
+                </div>
+                <div class="form-group p-2">
+                    <label for="Artist">Artist</label>
+                    <input type="text" name="Artist" id="Artist" class="form-control" placeholder="Artist">
+                </div>
+                <div class="form-group p-2">
+                    <label for="Words">Words</label>
+                    <textarea style="height:150px;" type="text" name="Words" id="Words" class="form-control" placeholder="Words"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Open second modal</button>
+            </div>
+        </div>
     </div>
 </div>

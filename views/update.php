@@ -5,8 +5,12 @@ if (isset($_POST["Update"])) {
 }
 
 if (isset($_POST["idUpdate"])) {
+
     $data = new SongsController();
     $song = $data->getOneSong();
+
+    $data = new AlbumsController();
+    $albums = $data->getAllAlbums();
 } else {
     Redirect::to("home");
 }
@@ -28,16 +32,20 @@ if (isset($_POST["idUpdate"])) {
                     <form method="post">
                         <input type="hidden" name="ID_Song" value="<?php echo $song->ID_Song ?>">
                         <div class="form-group p-2">
-                            <label for="Artist">Artist</label>
-                            <input type="text" name="Artist" class="form-control" placeholder="Artist" value="<?php echo $song->Name_Artist  ?>">
+                            <label for="Album">Album </label>
+                            <select class="form-select" name="Album" aria-label="Default select example">
+                                <option value="<?php echo $song->ID_Album ?>" selected><?php echo $song->Name_Album ?> [<?php echo $song->Name_Artist ?>]</option>
+                                <?php foreach ($albums as $album) :
+                                    if ($song->ID_Album != $album->ID_Album) { ?>
+                                    <option value="<?php echo $album->ID_Album ?>" ><?php echo $album->Name_Album ?> [<?php echo $album->Name_Artist ?>]</option>
+
+                                <?php }
+                                endforeach; ?>
+                            </select>
                         </div>
                         <div class="form-group p-2">
                             <label for="Song">Song</label>
                             <input type="text" name="Song" class="form-control" placeholder="Song" value="<?php echo $song->Name_Song ?>">
-                        </div>
-                        <div class="form-group p-2">
-                            <label for="Album">Album</label>
-                            <input type="text" name="Album" class="form-control" placeholder="Album" value="<?php echo $song->Name_Album ?>">
                         </div>
                         <div class="form-group p-2">
                             <label for="Words">Words</label>
