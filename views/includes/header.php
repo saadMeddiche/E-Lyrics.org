@@ -1,7 +1,8 @@
 <?php $datas = new CountController();
 $statistics = $datas->statistics(); ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%;">
 
 <head>
     <meta charset="UTF-8">
@@ -14,31 +15,98 @@ $statistics = $datas->statistics(); ?>
     <title>E-Music</title>
 </head>
 
-<body>
-    <div class="container d-flex  justify-content-between text-center gap-5 mt-5">
-        <div class="card" style="width: 18rem;">
+<style>
+    .link {
+        text-decoration: none;
+        color: #1C82AD;
+    }
+
+    .card {
+        border: 5px solid #1C82AD;
+    }
+
+    .Links {
+        background-color: #00337C;
+    }
+
+    .Add-Button {
+        background-color: #03C988;
+        border: 3px solid #1C82AD;
+    }
+
+    .Add-Button-icon {}
+
+    .Home-Button {
+        background-color: #03C988;
+        border: 3px solid #1C82AD;
+    }
+
+    .Home-Button-icon {}
+
+    .titles {
+        color: #03C988;
+        font-size: 20px;
+        border-bottom: 4px solid #03C988 !important;
+    }
+
+    .Rows {
+        border-bottom: 4px solid #03C988 !important;
+
+    }
+
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+        background: #00337C;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background: #03C988;
+
+    }
+
+    @media (max-width:770px) {
+        .HolderOfLinks {
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .Links {
+            width: 100% !important;
+        }
+    }
+</style>
+
+<body style="background-image: url('./views/includes/bg-login.png'); background-position: center; background-size: cover;        background-repeat: no-repeat; height:100%; background-color:#13005A;">
+    <div class="container d-flex justify-content-between text-center gap-5 mt-5 HolderOfLinks">
+        <div class="card Links" style="width: 18rem;">
             <div class="card-body">
-                <a href="./artists">
-                    <h5 class="card-title">Les Artistes</h5>
-                    <p class="card-text"><?php echo $statistics[0]->Num_Artist ?></p>
+                <a class="link" href="./artists">
+                    <h5 class="card-title"><b>Les Artistes</b></h5>
+                    <p class="card-text"><b><?php echo $statistics[0]->Num_Artist ?></b></p>
                 </a>
 
             </div>
         </div>
-        <div class="card" style="width: 18rem;">
+        <div class="card Links" style="width: 18rem;">
             <div class="card-body">
-                <a href="./home">
+                <a class="link" href="./home">
 
-                    <h5 class="card-title">Les Titres</h5>
-                    <p class="card-text"><?php echo $statistics[0]->Num_Song  ?></p>
+                    <h5 class="card-title"><b>Les Titres</b></h5>
+                    <p class="card-text"><b><?php echo $statistics[0]->Num_Song  ?></b></p>
                 </a>
 
             </div>
         </div>
-        <div class="card" style="width: 18rem;">
+        <div class="card Links" style="width: 18rem;">
             <div class="card-body">
-                <h5 class="card-title">Les Utilisateurs</h5>
-                <p class="card-text"><?php echo $statistics[0]->Num_User ?></p>
+                <a class="link" href="./home">
+
+                    <h5 class="card-title"><b>Les Utilisateurs</b></h5>
+                    <p class="card-text"><b><?php echo $statistics[0]->Num_User ?></b></p>
+                </a>
+
             </div>
         </div>
     </div>

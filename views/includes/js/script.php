@@ -1,9 +1,13 @@
 <?php
+$url = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
 $data = new ArtistsController();
 $artists = $data->getAllArtists();
 
 $data = new AlbumsController();
 $albums = $data->getAllAlbums();
+
+
 ?>
 <script>
     duplication(1);
@@ -190,15 +194,20 @@ $albums = $data->getAllAlbums();
 
     }
 
+    //This Function Fill the modal whith the information of the selected song
+    //Trigger:Eye-Button In Home Page
     function fillHome(id) {
-        alert("test");
-        var NameArtist = document.getElementById("NameOfSong" + id).innerHTML
-        var NameSong = document.getElementById("NameOfArtist" + id).innerHTML
+
+        //Collect The information From The Selected row [Song]
+        var NameSong = document.getElementById("NameOfSong" + id).innerHTML
+        var NameArtist = document.getElementById("NameOfArtist" + id).innerHTML
         var NameAlbum = document.getElementById("NameOfAlbum" + id).innerHTML
         var WordsSong = document.getElementById("wordsOFSong" + id).value
 
-        document.getElementById("Artist").value = NameArtist
-        document.getElementById("Song").value = NameSong
+        //Fill The Modal With the information 
+        document.getElementById("exampleModalToggleLabel").innerHTML = NameSong + "<b style='color:#1C82AD;'> By </b>" + NameArtist
+        // document.getElementById("Artist").value = NameArtist
+        // document.getElementById("Song").value = NameSong
         document.getElementById("Album").value = NameAlbum
         document.getElementById("Words").value = WordsSong
 

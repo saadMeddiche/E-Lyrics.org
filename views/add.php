@@ -15,11 +15,15 @@ if ($url == "http://localhost/E-Lyrics.org/add?artist=758") {
     if (isset($_POST["Ajouter"])) {
         $order = new SongsController();
         $order->addSongs();
+        Redirect::to('songs');
+
     }
 } else {
     if (isset($_POST["Ajouter"])) {
         $order = new SongsController();
         $order->addSongs();
+        Redirect::to('home');
+
     }
 }
 

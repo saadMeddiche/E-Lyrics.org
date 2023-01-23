@@ -35,8 +35,8 @@ if (isset($_POST["find"])) {
 
                 <div class="container d-flex justify-content-between align-items-center p-2">
                     <div>
-                        <a href="./add?artist=758" class="btn btn-sm btn-primary mr-2 ">
-                            <i class="fas fa-plus">
+                        <a href="./add?artist=758" class="btn btn-sm btn-primary mr-2 Add-Button">
+                            <i class="fas fa-plus Add-Button-icon">
                             </i>
                         </a>
                         <a href="./home" class="btn btn-sm btn-secondary mary mr-2 ">

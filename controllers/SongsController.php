@@ -21,8 +21,10 @@ class SongsController
 
     public function getSongsFromAlbum()
     {
-        $songs = Song::getFromAlbum($_SESSION["IdOfAlbum"]);
-        return $songs;
+        if (isset($_SESSION["IdOfAlbum"])) {
+            $songs = Song::getFromAlbum($_SESSION["IdOfAlbum"]);
+            return $songs;
+        }
     }
 
     public function addSongs()
@@ -44,8 +46,6 @@ class SongsController
             );
 
             Song::add($data);
-
-            Redirect::to('songs');
 
         }
     }
