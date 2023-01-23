@@ -61,26 +61,36 @@ if (isset($_POST["find"])) {
 
                 <div class="card-body bg-light d-flex flex-wrap gap-3">
                     <?php foreach ($Albums as $Album) : ?>
-                        <div class="card w-20" style="width: 18rem;">
-                            <form method="post">
-                                <input type="hidden" name="idDelete" value="<?php echo $Album->ID_Album ?>">
-                                <button class="btn btn-sm btn-danger" onclick="var test='Are You Sure !' ; return confirm(test);"><i class="fa fa-x"></i></button>
-                            </form>
+                        <div class="card w-20 " style="width: 18rem;">
+                            <div class="d-flex justify-content-between">
+
+                                <form method="post">
+                                    <input type="hidden" name="idDelete" value="<?php echo $Album->ID_Album ?>">
+                                    <button class="btn btn-sm btn-danger" onclick="var test='Are You Sure !' ; return confirm(test);"><i class="fa fa-x"></i></button>
+                                </form>
+                            </div>
+
 
                             <form method="post">
 
                                 <div role='button' class="card-body text-center" ondblclick="document.getElementById('viewAlbums<?php echo $Album->ID_Album ?>').click()">
 
                                     <input type="hidden" name="IdOfAlbum" value="<?php echo $Album->ID_Album ?>">
-                                    <input class="card-title" name="NameOfAlbum" value="<?php echo $Album->Name_Album ?>">
+                                    <h2 id="FrontValue<?php echo $Album->ID_Album ?>"><?php echo $Album->Name_Album ?></h2>
+                                    <div class="d-flex" id="InputValueAndButtonOk<?php echo $Album->ID_Album ?>" style="display:none">
 
+                                        <input class="text-center fs-5 font-weight-bold h-100" id="InputValue<?php echo $Album->ID_Album ?>" name="NameOfAlbum" value="<?php echo $Album->Name_Album ?>" style="display:none">
+                                        <button id="ButtonOk<?php echo $Album->ID_Album ?>" type="submit" name="Update" style="display:none"><i class="fas fa-check"></i></button>
+
+                                    </div>
                                 </div>
-
                                 <button type="submit" name="GoToSongs" id="viewAlbums<?php echo $Album->ID_Album ?>" hidden><i class="fa fa-eye"></i></button>
 
-                                <button type="submit" name="Update" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
-
                             </form>
+
+                            <div id="ButtonUpdate<?php echo $Album->ID_Album ?>">
+                                <button onclick="updateAnimation(<?php echo $Album->ID_Album ?>,0)" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
+                            </div>
 
                         </div>
 

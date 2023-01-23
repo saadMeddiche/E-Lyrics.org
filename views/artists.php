@@ -72,9 +72,13 @@ if (isset($_POST["find"])) {
                                     <input type="hidden" name="IdOfArtist" value="<?php echo $artist->ID_Artist ?>">
 
                                     <h2 id="FrontValue<?php echo $artist->ID_Artist ?>"><?php echo $artist->Name_Artist ?></h2>
-                                    <div class="d-flex">
-                                        <input name="NameOfArtist" id="InputValue<?php echo $artist->ID_Artist ?>" class="text-center fs-5 font-weight-bold" value="<?php echo $artist->Name_Artist ?>">
-                                        <button id="ButtonOk<?php echo $artist->ID_Artist ?>"><i class="fas fa-o"></i></button>
+
+                                    <div class="d-flex" id="InputValueAndButtonOk<?php echo $artist->ID_Artist ?>" style="display:none">
+
+                                        <input name="NameOfArtist" id="InputValue<?php echo $artist->ID_Artist ?>" class="text-center fs-5 font-weight-bold" value="<?php echo $artist->Name_Artist ?>" style="display:none">
+
+                                        <button id="ButtonOk<?php echo $artist->ID_Artist ?>" type="submit" name="Update" style="display:none"><i class="fas fa-check"></i></button>
+
                                     </div>
 
                                 </div>
@@ -83,7 +87,7 @@ if (isset($_POST["find"])) {
                             </form>
 
                             <div id="ButtonUpdate<?php echo $artist->ID_Artist ?>">
-                                <button onclick="updateAnimation(<?php echo $artist->ID_Artist ?>,0)" type="submit" name="Update" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
+                                <button onclick="updateAnimation(<?php echo $artist->ID_Artist ?>,0)" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
                             </div>
 
                         </div>

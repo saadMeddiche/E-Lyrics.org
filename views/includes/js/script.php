@@ -11,17 +11,22 @@ $albums = $data->getAllAlbums();
     function updateAnimation(id, mod) {
 
 
-        var FrontValue = document.getElementById("FrontValue" + id).style.display
+        var FrontValue = document.getElementById("FrontValue" + id)
 
-        var InputValue = document.getElementById("InputValue" + id).style.display
+        var InputValue = document.getElementById("InputValue" + id)
 
-        var ButtonOk = document.getElementById("ButtonOk" + id).style.display
+        var ButtonOk = document.getElementById("ButtonOk" + id)
 
         var ButtonUpdate = document.getElementById("ButtonUpdate" + id)
 
         if (mod == 0) {
+
             ButtonUpdate.style.display = "none"
-            FrontValue = "none"
+            FrontValue.style.display = "none"
+            ButtonOk.style.display = "block"
+            InputValue.style.display = "block"
+            document.getElementById("InputValueAndButtonOk" + id).style.display = "block"
+
         } else {
 
         }
