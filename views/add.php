@@ -64,7 +64,7 @@ if ($url == "http://localhost/E-Lyrics.org/add?artist=758") {
                         </div>
 
                     </div>
-                    <form method="post">
+                    <form method="post" data-parsley-validate>
                         <input type="hidden" id="Train" name="Train">
 
                         <div class="Cards" id="Cards">

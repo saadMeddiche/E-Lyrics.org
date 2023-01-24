@@ -69,11 +69,11 @@ $albums = $data->getAllAlbums();
                     </div>
                     <div class="form-group p-2">
                         <label for="Song${i}">Song ${i}</label>
-                        <input type="text" name="Song${i}" class="form-control" placeholder="Song..." style="border-bottom:4px solid #03C988; color:#03C988; font-weight:bold;">
+                        <input type="text" name="Song${i}" class="form-control" placeholder="Song..." style="border-bottom:4px solid #03C988; color:#03C988; font-weight:bold;" required>
                     </div>
                     <div class="form-group p-2">
                         <label for="Words${i}">Words ${i}</label>
-                        <textarea type="text" name="Words${i}" class="form-control" placeholder="Words..." style="border-bottom:4px solid #03C988; color:#03C988; font-weight:bold; height:150px;"></textarea>
+                        <textarea type="text" name="Words${i}" class="form-control" placeholder="Words..." style="border-bottom:4px solid #03C988; color:#03C988; font-weight:bold; height:150px;" required></textarea>
                     </div>
                 </div>
                 
