@@ -32,41 +32,41 @@ if (isset($_POST["find"])) {
     <div class="row my-4">
         <div class="col-md-12 mx-auto">
             <div class="card">
-                <div class="card-header text-center">Albums</div>
+                <div class="card-header text-center big-title">Albums</div>
 
-                <div class="container d-flex justify-content-between align-items-center p-2">
+                <div class="container d-flex flex-wrap justify-content-md-between justify-content-center align-items-center p-2 gap-2">
                     <div>
-                        <a href="./add?album=758" class="btn btn-sm btn-primary mr-2 ">
+                        <a href="./add?album=758" class="btn btn-sm btn-primary mr-2 Add-Button">
                             <i class="fas fa-plus">
                             </i>
                         </a>
-                        <a href="./home" class="btn btn-sm btn-secondary mary mr-2 ">
+                        <a href="./home" class="btn btn-sm btn-secondary mary mr-2 Home-Button">
                             <i class="fas fa-home">
                             </i>
                         </a>
-                        <a href="./artists" class="btn btn-sm btn-success mary mr-2 ">
+                        <a href="./artists" class="btn btn-sm btn-success mary mr-2 " style="border:3px solid #1C82AD;">
                             <i class="fas fa-arrow-left">
                             </i>
                         </a>
 
                     </div>
                     <div>
-                        <form method="post" class="d-flex flex-row justify-content-end">
-                            <input type="text" name="search" placeholder="Recherche">
-                            <button class="btn btn-info btn-sm" name="find" type="submit"><i class="fas fa-search"></i></button>
+                        <form method="post" class="d-flex flex-row justify-content-md-end justify-content-center">
+                            <input class="input-search rounded-start input-search-artists" type="text" name="search" placeholder="Search...">
+                            <button class="btn btn-info btn-sm icon-search rounded-end" name="find" type="submit"><i class="fas fa-search"></i></button>
                         </form>
                     </div>
 
                 </div>
 
-                <div class="card-body bg-light d-flex flex-wrap gap-3">
+                <div class="card-body bg-light d-flex justify-content-center  flex-wrap gap-3">
                     <?php foreach ($Albums as $Album) : ?>
-                        <div class="card w-20 " style="width: 18rem;">
-                            <div class="d-flex justify-content-between">
+                        <div class="card w-20 media-query-cards justify-content-between" style="width: 18rem;">
 
+                            <div class="d-flex justify-content-between">
                                 <form method="post">
                                     <input type="hidden" name="idDelete" value="<?php echo $Album->ID_Album ?>">
-                                    <button class="btn btn-sm btn-danger" onclick="var test='Are You Sure !' ; return confirm(test);"><i class="fa fa-x"></i></button>
+                                    <button class="btn btn-sm trash-button-of-card" onclick="var test='Are You Sure !' ; return confirm(test);" style="border-radius:1px 1px 5px 1px;"><i class="fa fa-trash"></i></button>
                                 </form>
                             </div>
 
@@ -77,10 +77,10 @@ if (isset($_POST["find"])) {
 
                                     <input type="hidden" name="IdOfAlbum" value="<?php echo $Album->ID_Album ?>">
                                     <h2 id="FrontValue<?php echo $Album->ID_Album ?>"><?php echo $Album->Name_Album ?></h2>
-                                    <div class="d-flex" id="InputValueAndButtonOk<?php echo $Album->ID_Album ?>" style="display:none">
+                                    <div class="d-flex justify-content-center w-full" id="InputValueAndButtonOk<?php echo $Album->ID_Album ?>" style="display:none">
 
-                                        <input class="text-center fs-5 font-weight-bold h-100" id="InputValue<?php echo $Album->ID_Album ?>" name="NameOfAlbum" value="<?php echo $Album->Name_Album ?>" style="display:none">
-                                        <button id="ButtonOk<?php echo $Album->ID_Album ?>" type="submit" name="Update" style="display:none"><i class="fas fa-check"></i></button>
+                                        <input class="text-center fs-5 font-weight-bold h-100 rounded-start input-update" id="InputValue<?php echo $Album->ID_Album ?>" name="NameOfAlbum" value="<?php echo $Album->Name_Album ?>">
+                                        <button class="rounded-end button-update" id="ButtonOk<?php echo $Album->ID_Album ?>" type="submit" name="Update"><i class="fas fa-check"></i></button>
 
                                     </div>
                                 </div>
@@ -88,8 +88,8 @@ if (isset($_POST["find"])) {
 
                             </form>
 
-                            <div id="ButtonUpdate<?php echo $Album->ID_Album ?>">
-                                <button onclick="updateAnimation(<?php echo $Album->ID_Album ?>,0)" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
+                            <div id="ButtonUpdate<?php echo $Album->ID_Album ?>" class="w-100">
+                                <button onclick="updateAnimation(<?php echo $Album->ID_Album ?>,0)" class="btn btn-sm  w-100 update-button-od-card"><i class="fa fa-edit"></i></button>
                             </div>
 
                         </div>

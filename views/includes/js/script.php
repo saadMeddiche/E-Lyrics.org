@@ -6,7 +6,7 @@ $artists = $data->getAllArtists();
 
 $data = new AlbumsController();
 $albums = $data->getAllAlbums();
-
+// onfocus="this.size=3";" onblur="this.size=0;" onchange="this.size=1"; this.blur()"
 
 ?>
 <script>
@@ -56,10 +56,11 @@ $albums = $data->getAllAlbums();
                 for (var i = 1; i <= $multiple; i++) {
 
                     text += `
+                    
                 <div class="card-header m-2">
                     <div class="form-group p-2">
                         <label for="Album${i}">Album ${i}</label>
-                        <select class="form-select" name="Album${i}" aria-label="Default select example">
+                        <select  class="form-select" name="Album${i}" aria-label="Default select example" style="border-bottom:4px solid #03C988; color:#03C988; font-weight:bold;">
                             <?php foreach ($albums as $album) : ?>
                             <option value="<?php echo $album->ID_Album ?>"><?php echo $album->Name_Album ?> [<?php echo $album->Name_Artist ?>]</option>
                             <?php endforeach; ?>
@@ -67,13 +68,14 @@ $albums = $data->getAllAlbums();
                     </div>
                     <div class="form-group p-2">
                         <label for="Song${i}">Song ${i}</label>
-                        <input type="text" name="Song${i}" class="form-control" placeholder="Song">
+                        <input type="text" name="Song${i}" class="form-control" placeholder="Song..." style="border-bottom:4px solid #03C988; color:#03C988; font-weight:bold;">
                     </div>
                     <div class="form-group p-2">
                         <label for="Words${i}">Words ${i}</label>
-                        <textarea style="height:150px" type="text" name="Words${i}" class="form-control" placeholder="Words"></textarea>
+                        <textarea type="text" name="Words${i}" class="form-control" placeholder="Words..." style="border-bottom:4px solid #03C988; color:#03C988; font-weight:bold; height:150px;"></textarea>
                     </div>
                 </div>
+                
                 `
                 }
 
@@ -104,7 +106,7 @@ $albums = $data->getAllAlbums();
                 <div class="card-header m-2">
                     <div class="form-group p-2">
                         <label for="Artist${i}">Artist ${i}</label>
-                        <input type="text" name="Artist${i}" class="form-control" placeholder="Artist">
+                        <input type="text" name="Artist${i}" class="form-control" placeholder="Artist..." style="border-bottom:4px solid #03C988; color:#03C988; font-weight:bold;">
                     </div>
                 </div>
                 `
@@ -135,7 +137,7 @@ $albums = $data->getAllAlbums();
             <div class="card-header m-2">
                 <div class="form-group p-2">
                     <label for="Album${i}">Album ${i}</label>
-                    <input type="text" name="Album${i}" class="form-control" placeholder="Artist">
+                    <input type="text" name="Album${i}" class="form-control" placeholder="Album..." style="border-bottom:4px solid #03C988; color:#03C988; font-weight:bold;">
                 </div>
             </div>
             `
@@ -167,11 +169,11 @@ $albums = $data->getAllAlbums();
                         <input type="hidden" name="Album${i}" value="<?php if (isset($_SESSION["IdOfAlbum"])) echo $_SESSION["IdOfAlbum"]  ?>" >
                         <div class="form-group p-2">
                             <label for="Song${i}">Song ${i}</label>
-                            <input type="text" name="Song${i}" class="form-control" placeholder="Song">
+                            <input type="text" name="Song${i}" class="form-control" placeholder="Song..." style="border-bottom:4px solid #03C988; color:#03C988; font-weight:bold;">
                         </div>
                         <div class="form-group p-2">
                             <label for="Words${i}">Words ${i}</label>
-                            <textarea style="height:150px" type="text" name="Words${i}" class="form-control" placeholder="Words"></textarea>
+                            <textarea style="height:150px" type="text" name="Words${i}" class="form-control" placeholder="Words..." style="border-bottom:4px solid #03C988; color:#03C988; font-weight:bold;"></textarea>
                         </div>
                     </div>
                     `

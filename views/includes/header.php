@@ -1,4 +1,8 @@
-<?php $datas = new CountController();
+<?php
+ob_start();
+
+$datas = new CountController();
+
 $statistics = $datas->statistics(); ?>
 
 <!DOCTYPE html>
@@ -34,14 +38,12 @@ $statistics = $datas->statistics(); ?>
         border: 3px solid #1C82AD;
     }
 
-    .Add-Button-icon {}
 
     .Home-Button {
         background-color: #03C988;
         border: 3px solid #1C82AD;
     }
 
-    .Home-Button-icon {}
 
     .titles {
         color: #03C988;
@@ -51,6 +53,16 @@ $statistics = $datas->statistics(); ?>
 
     .Rows {
         border-bottom: 4px solid #03C988 !important;
+
+    }
+
+
+    .big-title {
+        background-color: #03C988;
+        color: #1C82AD;
+        font-weight: bold;
+        font-size: 20px;
+        border-bottom: 5px solid #1C82AD;
 
     }
 
@@ -66,7 +78,18 @@ $statistics = $datas->statistics(); ?>
 
     }
 
-    @media (max-width:770px) {
+    ::placeholder {
+        color: #03C988 !important;
+
+        /* Firefox */
+    }
+
+    @media screen and (max-width:770px) {
+        .media-query-cards {
+            width: 100% !important;
+
+        }
+
         .HolderOfLinks {
             width: 100%;
             flex-wrap: wrap;
@@ -75,6 +98,49 @@ $statistics = $datas->statistics(); ?>
         .Links {
             width: 100% !important;
         }
+    }
+
+
+    @media screen and (max-width:338px) {
+        .media-query {
+            width: 100% !important;
+        }
+
+        .input-search-artists {
+            width: 50% !important;
+        }
+    }
+
+    .input-search {
+        border: 4px solid #03C988;
+        color: #03C988;
+        font-weight: bold;
+    }
+
+    .icon-search {
+        border-radius: 0px;
+        background-color: #03C988;
+        border: 2px solid #03C988;
+    }
+
+    .input-update {
+        display: none;
+        border: 2px solid black;
+    }
+
+    .button-update {
+        display: none;
+        background-color: #1C82AD;
+    }
+
+    .trash-button-of-card {
+        border-radius: 1px 1px 5px 1px;
+        background-color: #1C82AD;
+    }
+
+    .update-button-od-card {
+        border-radius: 5px 5px 1px 1px;
+        background-color: #03C988;
     }
 </style>
 
@@ -99,14 +165,16 @@ $statistics = $datas->statistics(); ?>
 
             </div>
         </div>
+
         <div class="card Links" style="width: 18rem;">
             <div class="card-body">
-                <a class="link" href="./home">
-
+                <a class="link" href="./albums">
                     <h5 class="card-title"><b>Les Utilisateurs</b></h5>
                     <p class="card-text"><b><?php echo $statistics[0]->Num_User ?></b></p>
                 </a>
 
             </div>
         </div>
+
+
     </div>

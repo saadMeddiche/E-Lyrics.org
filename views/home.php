@@ -41,8 +41,8 @@ if (isset($_POST['find'])) {
                         </form>
 
                         <form method="post" class="d-flex flex-row justify-content-end align-items-center" action="">
-                            <input class="rounded-start" type="text" name="search" placeholder="Recherche ..." style="border:4px solid #03C988; color:#03C988; font-weight:bold; ">
-                            <button class="btn btn-info btn-sm rounded-end" style="border-radius:0px; background-color:#03C988; border:2px solid #03C988;" name="find" type="submit"><i class="fas fa-search"></i></button>
+                            <input class="rounded-start input-search" type="text" name="search" placeholder="Search ...">
+                            <button class="btn btn-info btn-sm rounded-end icon-search" name="find" type="submit"><i class="fas fa-search"></i></button>
                         </form>
                     </div>
 
