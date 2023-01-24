@@ -41,18 +41,25 @@ if ($url == "http://localhost/E-Lyrics.org/add?artist=758") {
                 <div class="card-header text-center" style="border-bottom:4px solid #1C82AD; color:#1C82AD; font-size:20px; font-weight:bold; background-color:#03C988;">Add a New <?php echo $titleOfAdd ?></div>
 
                 <div class="card-body bg-light">
-                    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 w-100">
+                    <div class="container d-flex flex-wrap justify-content-md-between justify-content-center align-items-center p-2 gap-2">
 
-                        <div class="media-query d-flex justify-content-center w-xs-50">
-                            <a href="./home" class="btn btn-sm btn-primary mr-2 Home-Button ">
-                                <i class="fas fa-home">
+                        <div class="media-query d-flex justify-content-center gap-2">
 
+                            <a href="" class="btn btn-sm btn-success mr-2 Home-Button">
+                                <i class="fas fa-repeat">
+                                </i>
+                            </a>
+
+                            <!-- Go back to the previous page -->
+                            <!-- https://www.computerhope.com/issues/ch000317.htm#:~:text=You%20can%20use%20the%20history,to%20the%20user's%20previous%20page. -->
+                            <a class="btn btn-sm btn-success mr-2 Home-Button" onclick="history.back()">
+                                <i class="fas fa-arrow-left">
                                 </i>
                             </a>
                         </div>
 
-                        <div class="media-query d-flex justify-content-center w-xs-50">
-                            <input class="rounded-start" type="number" name="Multiple" id="Multiple" min="1" placeholder="Multiple ..." style="border:4px solid #03C988;">
+                        <div class="d-flex flex-row justify-content-md-end justify-content-center">
+                            <input class="input-search rounded-start input-search-artists" type="number" name="Multiple" id="Multiple" min="1" placeholder="Multiple ..." style="border:4px solid #03C988;">
                             <button class="btn btn-sm btn-primary rounded-end " name="duplicate" onclick="duplication(document.getElementById('Multiple').value)" type="submit" style="background-color:#03C988; border-radius:0; border:2px solid #03C988;"><i class="fas fa-x"></i></button>
                         </div>
 

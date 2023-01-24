@@ -28,6 +28,7 @@ if (isset($_POST['find'])) {
 
 ?>
 
+
 <div class="container">
     <div class="row my-4">
         <div class="col-md-10 mx-auto">
@@ -35,7 +36,7 @@ if (isset($_POST['find'])) {
                 <div class="card-body bg-light">
                     <div class="d-flex flex-wrap justify-content-center justify-content-md-between align-items-center gap-2 ">
                         <form method="post" class="d-flex align-items-center w-sm-100 h-100">
-                            <button name="logout" class="btn btn-sm btn-secondary mary mr-2 " style="background-color:#03C988; border:5px solid #1C82AD;">
+                            <button name="logout" class="btn btn-sm btn-success mary mr-2 " style="background-color:#03C988; border:5px solid #1C82AD;">
                                 <b><i class="fas fa-user mr-2"></i> <?php echo $_SESSION['username'] ?></b>
                             </button>
                         </form>
@@ -47,13 +48,13 @@ if (isset($_POST['find'])) {
                     </div>
 
 
-                    <a href="./add" class="btn btn-sm btn-primary mr-2 mt-2 Add-Button">
+                    <a href="./add" class="btn btn-sm btn-success mr-2 mt-2 Add-Button">
                         <i class="fas fa-plus Add-Button-icon">
                         </i>
                     </a>
 
-                    <a href="./home" class="btn btn-sm btn-secondary mary mr-2 mt-2 Home-Button">
-                        <i class="fas fa-home Home-Button-icon">
+                    <a href="./home" class="btn btn-sm btn-success mary mr-2 mt-2 Home-Button">
+                        <i class="fas fa-repeat Home-Button-icon">
                         </i>
                     </a>
 
@@ -104,7 +105,7 @@ if (isset($_POST['find'])) {
                                                 </form>
                                                 <form method="post">
                                                     <input type="hidden" name="idDelete" value="<?php echo $song->ID_Song ?>">
-                                                    <button class="btn btn-sm btn-danger" onclick="var test='Are You Sure !' ; return confirm(test);"><i class="fa fa-trash"></i></button>
+                                                    <button class="btn btn-sm btn-danger" onclick="var test='Are You Sure To Delete It ?' ; return confirm(test);"><i class="fa fa-trash"></i></button>
                                                 </form>
                                                 <input type="hidden" name="wordsOfSong" id="wordsOFSong<?php echo $song->ID_Song ?>" value="<?php echo $song->Words_Song ?>">
                                                 <button onclick="fillHome(<?php echo $song->ID_Song ?>)" class="btn btn-sm btn-success" data-bs-toggle="modal" href="#exampleModalToggle"><i class="fa fa-eye"></i></button>
@@ -147,7 +148,7 @@ if (isset($_POST['find'])) {
                 </div>
                 <div class="form-group p-2">
                     <label for="Words" style="color: #1C82AD;"><b>Words</b></label>
-                    <textarea style="height:150px; border-bottom:4px solid #03C988; color:#03C988; font-weight:bold; pointer-events: none;" type="text" name="Words" id="Words" class="form-control" placeholder="Words"></textarea>
+                    <textarea style="height:150px; border-bottom:4px solid #03C988; color:#03C988; font-weight:bold;" type="text" name="Words" id="Words" class="form-control" placeholder="Words"></textarea>
                 </div>
             </div>
             <div class="modal-footer " style="border-top:4px solid #1C82AD;background-color:#03C988;">

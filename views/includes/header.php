@@ -20,6 +20,10 @@ $statistics = $datas->statistics(); ?>
 </head>
 
 <style>
+    .active {
+        background-color: #03C988 !important;
+    }
+
     .link {
         text-decoration: none;
         color: #1C82AD;
@@ -136,17 +140,21 @@ $statistics = $datas->statistics(); ?>
     .trash-button-of-card {
         border-radius: 1px 1px 5px 1px;
         background-color: #1C82AD;
+        color: black;
+        border: 4px solid #1C82AD;
     }
 
     .update-button-od-card {
         border-radius: 5px 5px 1px 1px;
         background-color: #03C988;
+        color: black;
+        border: 2px solid #03C988;
     }
 </style>
 
 <body style="background-image: url('./views/includes/bg-login.png'); background-position: center; background-size: cover;        background-repeat: no-repeat; height:100%; background-color:#13005A;">
     <div class="container d-flex justify-content-between text-center gap-5 mt-5 HolderOfLinks">
-        <div class="card Links" style="width: 18rem;">
+        <div class="card Links" id="LesArtistes" style="width: 18rem;">
             <div class="card-body">
                 <a class="link" href="./artists">
                     <h5 class="card-title"><b>Les Artistes</b></h5>
@@ -155,7 +163,7 @@ $statistics = $datas->statistics(); ?>
 
             </div>
         </div>
-        <div class="card Links" style="width: 18rem;">
+        <div class="card Links" id="LesTitres" style="width: 18rem;">
             <div class="card-body">
                 <a class="link" href="./home">
 
@@ -168,7 +176,7 @@ $statistics = $datas->statistics(); ?>
 
         <div class="card Links" style="width: 18rem;">
             <div class="card-body">
-                <a class="link" href="./albums">
+                <a class="link" >
                     <h5 class="card-title"><b>Les Utilisateurs</b></h5>
                     <p class="card-text"><b><?php echo $statistics[0]->Num_User ?></b></p>
                 </a>

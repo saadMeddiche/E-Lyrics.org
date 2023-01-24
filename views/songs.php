@@ -1,4 +1,7 @@
 <?php
+if (!isset($_SESSION["IdOfAlbum"])) {
+    Redirect::to('home');
+}
 if (isset($_POST["idDelete"])) {
     $order = new SongsController();
     $order->deleteSong();
@@ -27,16 +30,16 @@ if (isset($_POST["findSongOfAnAlbum"])) {
     <div class="row my-4">
         <div class="col-md-12 mx-auto">
             <div class="card">
-                <div class="card-header text-center big-title">Songs</div>
+                <div class="card-header text-center big-title">Songs From <?php echo $_SESSION["NameOfAlbum"] ?></div>
 
                 <div class="container d-flex flex-wrap justify-content-md-between justify-content-center align-items-center p-2 gap-2">
                     <div>
-                        <a href="./add?songs=758" class="btn btn-sm btn-primary mr-2 Add-Button">
+                        <a href="./add?songs=758" class="btn btn-sm btn-success mr-2 Add-Button">
                             <i class="fas fa-plus">
                             </i>
                         </a>
-                        <a href="./home" class="btn btn-sm btn-secondary mary mr-2 Home-Button">
-                            <i class="fas fa-home">
+                        <a href="" class="btn btn-sm btn-success mary mr-2 Home-Button">
+                            <i class="fas fa-repeat">
                             </i>
                         </a>
                         <a href="./albums" class="btn btn-sm btn-success mary mr-2 " style="border:3px solid #1C82AD;">
@@ -47,8 +50,8 @@ if (isset($_POST["findSongOfAnAlbum"])) {
                     </div>
                     <div>
                         <form method="post" class="d-flex flex-row justify-content-md-end justify-content-center">
-                            <input class="input-search rounded-start input-search-artists" type="text" name="search" placeholder="Recherche">
-                            <button class="btn btn-info btn-sm icon-search rounded-end" name="findSongOfAnAlbum" type="submit"><i class="fas fa-search"></i></button>
+                            <input class="input-search rounded-start input-search-artists" type="text" name="search" placeholder="Search...">
+                            <button class="btn btn-success btn-sm icon-search rounded-end" name="findSongOfAnAlbum" type="submit"><i class="fas fa-search"></i></button>
                         </form>
                     </div>
 
@@ -59,14 +62,14 @@ if (isset($_POST["findSongOfAnAlbum"])) {
                         <div class="card w-20 media-query-cards justify-content-between" style="width: 18rem;">
                             <form method="post">
                                 <input type="hidden" name="idDelete" value="<?php echo  $Song->ID_Song ?>">
-                                <button class="btn btn-sm trash-button-of-card" onclick="var test='Are You Sure !' ; return confirm(test);" ><i class="fa fa-trash"></i></button>
+                                <button class="btn btn-sm btn-primary trash-button-of-card" onclick="var test='Are You Sure !' ; return confirm(test);"><i class="fa fa-trash"></i></button>
                             </form>
                             <div class="card-body text-center">
                                 <h5 class="card-title" id="NameOfSong<?php echo  $Song->ID_Song ?>"><?php echo $Song->Name_Song ?></h5>
                                 <input type="hidden" id="WordsOfSong<?php echo  $Song->ID_Song ?>" value="<?php echo $Song->Words_Song ?>">
                             </div>
 
-                            <button onclick="fillSong(<?php echo  $Song->ID_Song ?>)" data-bs-toggle="modal" href="#exampleModalToggle" class="btn btn-sm update-button-od-card" ><i class="fa fa-edit"></i></button>
+                            <button onclick="fillSong(<?php echo  $Song->ID_Song ?>)" data-bs-toggle="modal" href="#exampleModalToggle" class="btn btn-sm btn-success update-button-od-card"><i class="fa fa-edit"></i></button>
 
                         </div>
                     <?php endforeach; ?>

@@ -1,4 +1,7 @@
 <?php
+if (!isset($_SESSION["IdOfArtist"])) {
+    Redirect::to('home');
+}
 if (isset($_POST["idDelete"])) {
     $order = new AlbumsController();
     $order->deleteAlbum();
@@ -7,6 +10,7 @@ if (isset($_POST["idDelete"])) {
 if (isset($_POST["GoToSongs"])) {
 
     $_SESSION["IdOfAlbum"] = $_POST["IdOfAlbum"];
+    $_SESSION["NameOfAlbum"] = $_POST["NameOfAlbum"];
     Redirect::to('songs');
 }
 
@@ -32,16 +36,16 @@ if (isset($_POST["find"])) {
     <div class="row my-4">
         <div class="col-md-12 mx-auto">
             <div class="card">
-                <div class="card-header text-center big-title">Albums</div>
+                <div class="card-header text-center big-title">Albums Of <?php echo $_SESSION["NameOfArtist"] ?></div>
 
                 <div class="container d-flex flex-wrap justify-content-md-between justify-content-center align-items-center p-2 gap-2">
                     <div>
-                        <a href="./add?album=758" class="btn btn-sm btn-primary mr-2 Add-Button">
+                        <a href="./add?album=758" class="btn btn-sm btn-success mr-2 Add-Button">
                             <i class="fas fa-plus">
                             </i>
                         </a>
-                        <a href="./home" class="btn btn-sm btn-secondary mary mr-2 Home-Button">
-                            <i class="fas fa-home">
+                        <a href="" class="btn btn-sm btn-success mary mr-2 Home-Button">
+                            <i class="fas fa-repeat">
                             </i>
                         </a>
                         <a href="./artists" class="btn btn-sm btn-success mary mr-2 " style="border:3px solid #1C82AD;">
@@ -66,7 +70,7 @@ if (isset($_POST["find"])) {
                             <div class="d-flex justify-content-between">
                                 <form method="post">
                                     <input type="hidden" name="idDelete" value="<?php echo $Album->ID_Album ?>">
-                                    <button class="btn btn-sm trash-button-of-card" onclick="var test='Are You Sure !' ; return confirm(test);" style="border-radius:1px 1px 5px 1px;"><i class="fa fa-trash"></i></button>
+                                    <button class="btn btn-sm btn-primary trash-button-of-card" onclick="var test='Are You Sure !' ; return confirm(test);" style="border-radius:1px 1px 5px 1px;"><i class="fa fa-trash"></i></button>
                                 </form>
                             </div>
 
@@ -89,7 +93,7 @@ if (isset($_POST["find"])) {
                             </form>
 
                             <div id="ButtonUpdate<?php echo $Album->ID_Album ?>" class="w-100">
-                                <button onclick="updateAnimation(<?php echo $Album->ID_Album ?>,0)" class="btn btn-sm  w-100 update-button-od-card"><i class="fa fa-edit"></i></button>
+                                <button onclick="updateAnimation(<?php echo $Album->ID_Album ?>,0)" class="btn btn-sm btn-success  w-100 update-button-od-card"><i class="fa fa-edit"></i></button>
                             </div>
 
                         </div>

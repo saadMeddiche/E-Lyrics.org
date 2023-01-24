@@ -11,6 +11,7 @@ $albums = $data->getAllAlbums();
 ?>
 <script>
     duplication(1);
+    wichPage();
 
     function updateAnimation(id, mod) {
 
@@ -173,7 +174,7 @@ $albums = $data->getAllAlbums();
                         </div>
                         <div class="form-group p-2">
                             <label for="Words${i}">Words ${i}</label>
-                            <textarea style="height:150px" type="text" name="Words${i}" class="form-control" placeholder="Words..." style="border-bottom:4px solid #03C988; color:#03C988; font-weight:bold;"></textarea>
+                            <textarea  type="text" name="Words${i}" class="form-control" placeholder="Words..." style="border-bottom:4px solid #03C988; color:#03C988; font-weight:bold; height:150px;"></textarea>
                         </div>
                     </div>
                     `
@@ -213,5 +214,13 @@ $albums = $data->getAllAlbums();
         document.getElementById("Album").value = NameAlbum
         document.getElementById("Words").value = WordsSong
 
+    }
+
+    function wichPage() {
+        if (document.URL == "http://localhost/E-Lyrics.org/home" || document.URL == "http://localhost/E-Lyrics.org/update" || document.URL == "http://localhost/E-Lyrics.org/add") {
+            document.getElementById("LesTitres").classList.add("active");
+        } else {
+            document.getElementById("LesArtistes").classList.add("active");
+        }
     }
 </script>
