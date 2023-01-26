@@ -2,7 +2,8 @@
 
 session_start();
 
-//Detect the the class name
+/*Detect when a new object has been created ,
+Then call the function autoload with the name of class as an atribute*/
 spl_autoload_register('autoload');
 
 function autoload($class_name)
@@ -25,5 +26,3 @@ function autoload($class_name)
         }
     }
 }
-
-

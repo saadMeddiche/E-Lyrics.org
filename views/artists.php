@@ -13,6 +13,7 @@ if (isset($_POST["GoToAlbums"])) {
     // window.location = './albums'
     // </script>";
     Redirect::to('albums');
+
 }
 
 if (isset($_POST["Update"])) {

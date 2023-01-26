@@ -94,12 +94,12 @@ if (isset($_POST["findSongOfAnAlbum"])) {
                 <div class="modal-body">
                     <div class="form-group p-2">
                         <label for="Song">Song</label>
-                        <input type="text" name="Song" id="Song" class="form-control" placeholder="Song" style="border-bottom:4px solid #03C988; color:#03C988; font-weight:bold; pointer-events: none;">
+                        <input type="text" name="Song" id="Song" class="form-control" placeholder="Song" style="border-bottom:4px solid #03C988; color:#03C988; font-weight:bold; ">
                         <input type="hidden" name="ID_Song" id="ID_Song">
                     </div>
                     <div class="form-group p-2">
                         <label for="Words">Words</label>
-                        <textarea type="text" name="Words" id="words" class="form-control" placeholder="words" style="border-bottom:4px solid #03C988; color:#03C988; font-weight:bold; pointer-events: none; height:150px;"></textarea>
+                        <textarea type="text" name="Words" id="words" class="form-control" placeholder="words" style="border-bottom:4px solid #03C988; color:#03C988; font-weight:bold; height:150px;"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer" style="border-top:4px solid #1C82AD;background-color:#03C988;">

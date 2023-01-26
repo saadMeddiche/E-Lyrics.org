@@ -35,14 +35,17 @@ if (isset($_POST['find'])) {
             <div class="card">
                 <div class="card-body bg-light">
                     <div class="d-flex flex-wrap justify-content-center justify-content-md-between align-items-center gap-2 ">
-                        <form method="post" class="d-flex align-items-center w-sm-100 h-100">
-                            <button name="logout" class="btn btn-sm btn-success mary mr-2 " style="background-color:#03C988; border:5px solid #1C82AD;">
+                        <form method="post" class="d-flex align-items-center w-sm-100 h-100 gap-2">
+                            <div class="btn btn-sm btn-success mary mr-2 " style="background-color:#03C988; border:5px solid #1C82AD;">
                                 <b><i class="fas fa-user mr-2"></i> <?php echo $_SESSION['username'] ?></b>
+                            </div>
+                            <button name="logout" class="btn btn-sm btn-success mary mr-2 " style="background-color:#03C988; border:5px solid #1C82AD;">
+                                <b>Logout </b>
                             </button>
                         </form>
 
-                        <form method="post" class="d-flex flex-row justify-content-end align-items-center" action="">
-                            <input class="rounded-start input-search" type="text" name="search" placeholder="Search ...">
+                        <form method="post" class="d-flex flex-row justify-content-md-end justify-content-center align-items-center" action="">
+                            <input class="rounded-start input-search input-search-artists" type="text" name="search" placeholder="Search ...">
                             <button class="btn btn-info btn-sm rounded-end icon-search" name="find" type="submit"><i class="fas fa-search"></i></button>
                         </form>
                     </div>

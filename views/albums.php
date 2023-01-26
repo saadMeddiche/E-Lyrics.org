@@ -1,7 +1,9 @@
 <?php
+
 if (!isset($_SESSION["IdOfArtist"])) {
     Redirect::to('home');
 }
+
 if (isset($_POST["idDelete"])) {
     $order = new AlbumsController();
     $order->deleteAlbum();
